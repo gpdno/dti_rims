@@ -1,0 +1,49 @@
+<%= form_for(part) do |f| %>
+  <% if part.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(part.errors.count, "error") %> prohibited this part from being saved:</h2>
+
+      <ul>
+      <% part.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="form-group">
+    <div class="control-label col-md-2">
+      <%= f.label :partno %>
+    </div>
+    <div class="col-md-8">
+      <%= f.text_field :partno, class: "form-control", placeholder: "Part number", autofocus: true %>
+    </div>
+  </div>
+    <div class="form-group">
+    <div class="control-label col-md-2">
+      <%= f.label :description %>
+    </div>
+    <div class="col-md-8">
+      <%= f.text_field :description, class: "form-control", placeholder: "Part name", autofocus: true %>
+    </div>
+  </div>
+  <div class="actions">
+  <div class="form-group">
+    <div class="control-label col-md-2">
+      <%= f.label :rev %>
+    </div>
+    <div class="col-md-8">
+      <%= f.number_field :rev, class: "form-control", placeholder: "Revision number", autofocus: true %>
+    </div>
+  </div>
+  <div class="control-label col-md-2">
+    <%= f.label :projects %>
+  </div>
+  <div class="col-md-6">
+    <%= f.collection_check_boxes :project_ids, Project.all, :id, :projectname do |cb| %>
+      <% cb.label(class: "checkbox-inline input_checkbox") {cb.check_box(class: "checkbox") + cb.text} %>
+    <% end %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
