@@ -2,4 +2,11 @@
 
 <% @parts.each do |part| %>
 	<p><%= part.partno %></p>
+  <p><%= part.description %></p>
+  <p><%= part.rev %></p>
+  <% if part.projects.any? %>
+    <% part.projects.each do |project| %>
+      <p>Projects: <%= project.projectname %></p>
+    <% end %>
+  <% end %>
 <% end %> 
