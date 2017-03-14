@@ -5,4 +5,6 @@ class Part < ApplicationRecord
 
 	has_many :projectparts
 	has_many :projects, through: :projectparts
+
+	default_scope -> { order(partno: :asc)}
 end

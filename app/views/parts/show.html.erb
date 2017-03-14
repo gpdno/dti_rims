@@ -1,4 +1,15 @@
 <p id="notice"><%= notice %></p>
-
-<%= link_to 'Edit', edit_part_path(@part) %> |
-<%= link_to 'Back', parts_path %>
+<div class="container">
+	<div class="row">
+		<div class="card" style=width: 20rem;>
+			<img class="card-img-top" image-url("MEC-000412, Rev 5.pdf") alt="Card Img">
+			<div class="card-block">
+				<h4 class="card-title">Card Title</h4>
+				<p class="card-text">Some quick example of the description</p>
+				<%= link_to 'Edit', edit_part_path(@part), class: "btn btn-primary" %>
+				<%= link_to 'Back', parts_path, class: "btn btn-primary"%>
+			</div>
+			</img>
+		</div>
+	</div>
+</div>
