@@ -1,12 +1,38 @@
-<%= link_to "New Part", new_part_path %>
-
-<% @parts.each do |part| %>
-	<p><%= part.partno %></p>
-  <p><%= part.description %></p>
-  <p><%= part.rev %></p>
-  <% if part.projects.any? %>
-    <% part.projects.each do |project| %>
-      <p>Projects: <%= project.projectname %></p>
-    <% end %>
-  <% end %>
-<% end %> 
+<div class="container">
+  <div class="row">
+  <div class="col">
+    <h2>Part Numbers</h2>
+  </div>
+  <div class="col">
+    <span><%= link_to "New Part", new_part_path %></span>
+  </div>
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered">
+        <thead>
+          <tr>
+            <th>Part Number</th>
+            <th>Description</th>
+            <th>Rev</th>
+            <th>Project</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @parts.each do |part| %>
+          <tr>
+            <td><%= link_to part.partno, part_path(part) %></td>
+            <td><%= part.description %></td>
+            <td><%= part.rev %></td>
+            <td>
+              <% if part.projects.any? %>
+                <% part.projects.each do |project| %>
+                  <span class='col-sm-3'><%= project.projectname %><br></span>
+                <% end %>
+              <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
